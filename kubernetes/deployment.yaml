@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: tg2
+  name: tg2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tg2
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: tg2
+    spec:
+      serviceAccountName: tg2
+      containers:
+        - image: brokenpip3/tg2:0.0.1-kube
+        imagePullPolicy: Always
+        name: tg2
+        env:
+        - name: TGTOKEN
+          valueFrom:
+            secretKeyRef:
+              name: tg2-token
+              key: TGTOKEN
+        volumeMounts:
+         - name: tg2-setting
+           mountPath: /usr/src/bot/config.yaml
+           readOnly: true
+           subPath: config.yaml
+      volumes:
+      - name: tg2-setting
+        configMap:
+          defaultMode: 0444
+          name: tg2-setting

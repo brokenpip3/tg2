@@ -1,0 +1,23 @@
+---
+botname: tg2-example
+myid: [1234556]
+about: This is a simple bot
+commands:
+  notfoundinpath:
+    id: '0'
+    description: my failed command
+    command: notaprogram
+    args:
+    output: code
+  myip:
+    id: '1'
+    description: check my ip
+    command: 'curl'
+    args: 'ifconfig.co'
+    output: code
+  cobrakai:
+    id: '2'
+    description: say cobra kay
+    command: 'echo'
+    args: 'COBRAKAI'
+    output: code

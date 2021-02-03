@@ -1,0 +1,36 @@
+---
+botname: checkmyappincluster
+myid: [1234566]
+about: Check app status in cluster
+setup: ['curl']
+commands:
+  mydeploy_logs:
+    id: '0'
+    description: Print last 10 lines of myapp logs
+    command: kubectl
+    args: ["logs", "-l", 'app.kubernetes.io/component=myap', "--tail=10", "-n", "default"]
+    output: code
+  mydeploy_pods:
+    id: '1'
+    description: Check zulip myapp status
+    command: kubectl
+    args: ["get", "pods", "-n", "default"]
+    output: code
+  kubectl_get_nodes:
+    id: '2'
+    description: Node status
+    command: kubectl
+    args: ["get", "nodes"]
+    output: code
+  zulip_webpage:
+    id: '3'
+    description: Return my app status
+    command: curl
+    args: ['-sL', '-w', '"%{http_code}"', 'https://mywebpage', '-o', '/dev/null']
+    output: code
+  spaceleft:
+    id: '4'
+    description: check space left
+    command: df
+    args: ["-h", "/"]
+    output: code

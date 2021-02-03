@@ -1,0 +1,6 @@
+__*
+.venv
+.vscode
+_token
+_version
+__pycache__

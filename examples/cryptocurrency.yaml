@@ -1,0 +1,24 @@
+---
+botname: crypto-currency
+myid: [121344]
+about: This bot show crypto-currency values
+setup: ['curl']
+commands:
+  zcash:
+    id: '0'
+    description: check zcash-dollar
+    command: curl
+    args: [ 'https://api.coingecko.com/api/v3/simple/price?ids=zcash&vs_currencies=USD']
+    output: code
+  bitcoin:
+    id: '1'
+    description: check bitcoin-dollar
+    command: curl
+    args: [ "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=USD" ]
+    output: code
+  monero:
+    id: '2'
+    description: get bitcoin description
+    command: 'curl'
+    args: [ "https://api.coingecko.com/api/v3/simple/price?ids=monero&vs_currencies=USD" ]
+    output: code
